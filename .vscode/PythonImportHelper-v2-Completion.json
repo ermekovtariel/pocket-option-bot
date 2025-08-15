@@ -106,6 +106,14 @@
         "documentation": {}
     },
     {
+        "label": "InputFile",
+        "importPath": "aiogram.types",
+        "description": "aiogram.types",
+        "isExtraImport": true,
+        "detail": "aiogram.types",
+        "documentation": {}
+    },
+    {
         "label": "executor",
         "importPath": "aiogram.utils",
         "description": "aiogram.utils",

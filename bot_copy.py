@@ -5,8 +5,8 @@ from aiohttp import web
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils import executor
-from aiogram.types import WebAppInfo
-
+from aiogram.types import WebAppInfo, InputFile
+# from aiogram.types import InputFile
 # ========= НАСТРОЙКИ =========
 API_TOKEN = "8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU"   # <-- твой токен бота
 CHANNEL_USERNAME = "@etb_music"
@@ -121,14 +121,19 @@ async def start(message: types.Message):
             (message.from_user.id, str(message.from_user.id))
         )
         await db.commit()
-    # await message.answer("Выберите язык / Choose language", reply_markup=language_inline())
-    kb = language_inline()
+    # await message.answer(
+    #     "Выберите язык / Choose language", 
+    #     photo_path = "main.jpg",
+    #     reply_markup=language_inline(),
+    # )
+    photo = InputFile("main.jpg") 
     await bot.send_photo(
-        message.chat.id,
-        photo=open("main.jpg", "rb"),
-        caption="Выберите язык / Choose language",
-        reply_markup=kb
+        chat_id=message.from_user.id,
+        photo=photo,  # путь к файлу на сервере или URL
+        caption="Выберите язык / Choose language",  # текст под фото
+        reply_markup=language_inline()
     )
+
 
 @dp.callback_query_handler(lambda c: True)
 async def callbacks(call: types.CallbackQuery):
@@ -146,13 +151,13 @@ async def callbacks(call: types.CallbackQuery):
             await db.execute("UPDATE users SET language=? WHERE user_id=?", (new_lang, user_id))
             await db.commit()
         if not await is_subscribed(user_id):
-            await call.message.edit_text(
+            await call.message.edit_caption(
                 t(new_lang, "Please subscribe to the channel to continue"),
                 reply_markup=subscribe_inline(new_lang)
             )
             return
         registered = await is_registered(user_id)
-        await call.message.edit_text(t(new_lang, "Main menu"), reply_markup=main_menu_inline(new_lang, registered=registered))
+        await call.message.edit_caption(t(new_lang, "Main menu"), reply_markup=main_menu_inline(new_lang, registered=registered))
         return
 
     if data == "check_sub":
@@ -161,13 +166,13 @@ async def callbacks(call: types.CallbackQuery):
                 await db.execute("UPDATE users SET subscribed=1 WHERE user_id=?", (user_id,))
                 await db.commit()
             registered = await is_registered(user_id)
-            await call.message.edit_text(t(lang, "Thanks! You are subscribed ✅"), reply_markup=main_menu_inline(lang, registered=registered))
+            await call.message.edit_caption(t(lang, "Thanks! You are subscribed ✅"), reply_markup=main_menu_inline(lang, registered=registered))
         else:
             await bot.answer_callback_query(call.id, "Вы ещё не подписаны 😕")
         return
 
     if data == "signals":
-        await call.message.edit_text(t(lang, "Register for signals:"), reply_markup=signals_inline(lang))
+        await call.message.edit_caption(t(lang, "Register for signals:"), reply_markup=signals_inline(lang))
         return
 
     if data == "register":
@@ -176,7 +181,7 @@ async def callbacks(call: types.CallbackQuery):
             await db.execute("UPDATE users SET click_id=? WHERE user_id=?", (str(user_id), user_id))
             await db.commit()
         url = tracking_url_template.format(click_id=user_id, promo=DEFAULT_PROMO)
-        await call.message.edit_text(
+        await call.message.edit_caption(
             f"{t(lang, 'For registration, please follow the link')}:\n{url}",
             reply_markup=back_inline(lang)
         )
@@ -191,7 +196,7 @@ async def callbacks(call: types.CallbackQuery):
 
     if data == "back":
         registered = await is_registered(user_id)
-        await call.message.edit_text(t(lang, "Main menu"), reply_markup=main_menu_inline(lang, registered=registered))
+        await call.message.edit_caption(t(lang, "Main menu"), reply_markup=main_menu_inline(lang, registered=registered))
         return
 
 # ========= HTTP POSTBACK (GET + POST) =========
