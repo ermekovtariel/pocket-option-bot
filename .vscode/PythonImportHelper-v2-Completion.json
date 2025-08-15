@@ -1,0 +1,410 @@
+[
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "aiosqlite",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "aiosqlite",
+        "description": "aiosqlite",
+        "detail": "aiosqlite",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "aiogram",
+        "description": "aiogram",
+        "isExtraImport": true,
+        "detail": "aiogram",
+        "documentation": {}
+    },
+    {
+        "label": "Dispatcher",
+        "importPath": "aiogram",
+        "description": "aiogram",
+        "isExtraImport": true,
+        "detail": "aiogram",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "importPath": "aiogram",
+        "description": "aiogram",
+        "isExtraImport": true,
+        "detail": "aiogram",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "aiogram",
+        "description": "aiogram",
+        "isExtraImport": true,
+        "detail": "aiogram",
+        "documentation": {}
+    },
+    {
+        "label": "Dispatcher",
+        "importPath": "aiogram",
+        "description": "aiogram",
+        "isExtraImport": true,
+        "detail": "aiogram",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "importPath": "aiogram",
+        "description": "aiogram",
+        "isExtraImport": true,
+        "detail": "aiogram",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
+        "importPath": "aiogram.types",
+        "description": "aiogram.types",
+        "isExtraImport": true,
+        "detail": "aiogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "aiogram.types",
+        "description": "aiogram.types",
+        "isExtraImport": true,
+        "detail": "aiogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
+        "importPath": "aiogram.types",
+        "description": "aiogram.types",
+        "isExtraImport": true,
+        "detail": "aiogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "aiogram.types",
+        "description": "aiogram.types",
+        "isExtraImport": true,
+        "detail": "aiogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "executor",
+        "importPath": "aiogram.utils",
+        "description": "aiogram.utils",
+        "isExtraImport": true,
+        "detail": "aiogram.utils",
+        "documentation": {}
+    },
+    {
+        "label": "executor",
+        "importPath": "aiogram.utils",
+        "description": "aiogram.utils",
+        "isExtraImport": true,
+        "detail": "aiogram.utils",
+        "documentation": {}
+    },
+    {
+        "label": "text_lang",
+        "importPath": "languages",
+        "description": "languages",
+        "isExtraImport": true,
+        "detail": "languages",
+        "documentation": {}
+    },
+    {
+        "label": "text_lang",
+        "importPath": "languages",
+        "description": "languages",
+        "isExtraImport": true,
+        "detail": "languages",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "web",
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "isExtraImport": true,
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
+        "label": "language_inline",
+        "kind": 2,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "def language_inline():\n    kb = InlineKeyboardMarkup(row_width=3)\n    kb.add(\n        InlineKeyboardButton(\"Русский\", callback_data=\"lang_ru\"),\n        InlineKeyboardButton(\"Кыргыз\", callback_data=\"lang_kg\"),\n        InlineKeyboardButton(\"English\", callback_data=\"lang_en\")\n    )\n    return kb\ndef subscribe_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "subscribe_inline",
+        "kind": 2,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "def subscribe_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(text_lang[lang][\"Subscribe to channel\"], url=f\"https://t.me/{CHANNEL_USERNAME[1:]}\"),\n        InlineKeyboardButton(text_lang[lang][\"Check subscription\"], callback_data=\"check_sub\")\n    )\ndef main_menu_inline(lang):\n    kb = InlineKeyboardMarkup(row_width=2)\n    kb.add(\n        InlineKeyboardButton(text_lang[lang][\"Change Language\"], callback_data=\"change_lang\"),\n        InlineKeyboardButton(text_lang[lang][\"Instruction\"], callback_data=\"instruction\")",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "main_menu_inline",
+        "kind": 2,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "def main_menu_inline(lang):\n    kb = InlineKeyboardMarkup(row_width=2)\n    kb.add(\n        InlineKeyboardButton(text_lang[lang][\"Change Language\"], callback_data=\"change_lang\"),\n        InlineKeyboardButton(text_lang[lang][\"Instruction\"], callback_data=\"instruction\")\n    )\n    kb.add(\n        InlineKeyboardButton(text_lang[lang][\"Support\"], url=support_user_url),\n        InlineKeyboardButton(text_lang[lang][\"Signals\"], callback_data=\"signals\")\n    )",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "back_inline",
+        "kind": 2,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "def back_inline(lang):\n    return InlineKeyboardMarkup().add(\n        InlineKeyboardButton(text_lang[lang][\"Back\"], callback_data=\"back\")\n    )\ndef signals_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(text_lang[lang][\"Register\"], callback_data=\"register\"),\n        InlineKeyboardButton(text_lang[lang][\"Check registration\"], callback_data=\"check_registration\"),\n        InlineKeyboardButton(text_lang[lang][\"Back\"], callback_data=\"back\")\n    )",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "signals_inline",
+        "kind": 2,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "def signals_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(text_lang[lang][\"Register\"], callback_data=\"register\"),\n        InlineKeyboardButton(text_lang[lang][\"Check registration\"], callback_data=\"check_registration\"),\n        InlineKeyboardButton(text_lang[lang][\"Back\"], callback_data=\"back\")\n    )\ndef support_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(text_lang[lang][\"Support\"], url=support_user_url),\n        InlineKeyboardButton(text_lang[lang][\"Back\"], callback_data=\"back\")",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "support_inline",
+        "kind": 2,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "def support_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(text_lang[lang][\"Support\"], url=support_user_url),\n        InlineKeyboardButton(text_lang[lang][\"Back\"], callback_data=\"back\")\n    )\n# ====== Хендлеры ======\n@dp.message_handler(commands=['start'])\nasync def start(message: types.Message):\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"INSERT OR IGNORE INTO users (user_id) VALUES (?)\", (message.from_user.id,))",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "API_TOKEN",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "API_TOKEN = '8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU'\nCHANNEL_USERNAME = '@etb_music'\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\npost_back_url = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "CHANNEL_USERNAME",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "CHANNEL_USERNAME = '@etb_music'\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\npost_back_url = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"\"\"",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "DB_NAME",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "DB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\npost_back_url = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "support_user_url",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "support_user_url = \"https://t.me/root_tora\"\npost_back_url = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                user_id INTEGER PRIMARY KEY,",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "post_back_url",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "post_back_url = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                user_id INTEGER PRIMARY KEY,\n                language TEXT DEFAULT 'ru',",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "bot",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "bot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                user_id INTEGER PRIMARY KEY,\n                language TEXT DEFAULT 'ru',\n                subscribed INTEGER DEFAULT 0,",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "dp",
+        "kind": 5,
+        "importPath": "bot",
+        "description": "bot",
+        "peekOfCode": "dp = Dispatcher(bot)\n# ====== Инициализация базы ======\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                user_id INTEGER PRIMARY KEY,\n                language TEXT DEFAULT 'ru',\n                subscribed INTEGER DEFAULT 0,\n                registered INTEGER DEFAULT 0,",
+        "detail": "bot",
+        "documentation": {}
+    },
+    {
+        "label": "t",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def t(lang: str, key: str) -> str:\n    # безопасный доступ к словарю локализаций\n    return text_lang.get(lang, {}).get(key, key)\nasync def is_subscribed(user_id: int) -> bool:\n    try:\n        member = await bot.get_chat_member(CHANNEL_USERNAME, user_id)\n        return member.status != \"left\"\n    except Exception:\n        return False\nasync def is_registered(trader_id: str) -> bool:",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "language_inline",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def language_inline():\n    kb = InlineKeyboardMarkup(row_width=3)\n    kb.add(\n        InlineKeyboardButton(\"Русский\", callback_data=\"lang_ru\"),\n        InlineKeyboardButton(\"Кыргыз\",  callback_data=\"lang_kg\"),\n        InlineKeyboardButton(\"English\", callback_data=\"lang_en\"),\n    )\n    return kb\ndef subscribe_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "subscribe_inline",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def subscribe_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang,\"Subscribe to channel\"), url=f\"https://t.me/{CHANNEL_USERNAME[1:]}\"),\n        InlineKeyboardButton(t(lang,\"Check subscription\"), callback_data=\"check_sub\"),\n    )\ndef main_menu_inline(lang):\n    kb = InlineKeyboardMarkup(row_width=2)\n    kb.add(\n        InlineKeyboardButton(t(lang,\"Change Language\"), callback_data=\"change_lang\"),\n        InlineKeyboardButton(t(lang,\"Instruction\"),    callback_data=\"instruction\"),",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "main_menu_inline",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def main_menu_inline(lang):\n    kb = InlineKeyboardMarkup(row_width=2)\n    kb.add(\n        InlineKeyboardButton(t(lang,\"Change Language\"), callback_data=\"change_lang\"),\n        InlineKeyboardButton(t(lang,\"Instruction\"),    callback_data=\"instruction\"),\n    )\n    kb.add(\n        InlineKeyboardButton(t(lang,\"Support\"), url=support_user_url),\n        InlineKeyboardButton(t(lang,\"Signals\"), callback_data=\"signals\"),\n    )",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "back_inline",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def back_inline(lang):\n    return InlineKeyboardMarkup().add(InlineKeyboardButton(t(lang,\"Back\"), callback_data=\"back\"))\ndef signals_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang,\"Register\"),            callback_data=\"register\"),\n        InlineKeyboardButton(t(lang,\"Check registration\"),  callback_data=\"check_registration\"),\n        InlineKeyboardButton(t(lang,\"Back\"),                callback_data=\"back\"),\n    )\ndef support_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "signals_inline",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def signals_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang,\"Register\"),            callback_data=\"register\"),\n        InlineKeyboardButton(t(lang,\"Check registration\"),  callback_data=\"check_registration\"),\n        InlineKeyboardButton(t(lang,\"Back\"),                callback_data=\"back\"),\n    )\ndef support_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang,\"Support\"), url=support_user_url),\n        InlineKeyboardButton(t(lang,\"Back\"),    callback_data=\"back\"),",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "support_inline",
+        "kind": 2,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "def support_inline(lang):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang,\"Support\"), url=support_user_url),\n        InlineKeyboardButton(t(lang,\"Back\"),    callback_data=\"back\"),\n    )\n# ========= ХЕНДЛЕРЫ БОТА =========\n@dp.message_handler(commands=[\"start\"])\nasync def start(message: types.Message):\n    async with aiosqlite.connect(DB_NAME) as db:\n        await db.execute(\"INSERT OR IGNORE INTO users (user_id) VALUES (?)\", (message.from_user.id,))",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "API_TOKEN",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "API_TOKEN = '8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU'   # <-- вставь свой токен бота\nCHANNEL_USERNAME = \"@etb_music\"               # <-- твой канал\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\n# Это НЕ postback-URL! Это трекинг/смарт ссылка для пользователя:\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\n# Если у тебя есть отдельный промокод/метка кампании — поменяй тут.\nDEFAULT_PROMO = \"TG\"\n# Импорт словаря локализаций\nfrom languages import text_lang",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "CHANNEL_USERNAME",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "CHANNEL_USERNAME = \"@etb_music\"               # <-- твой канал\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\n# Это НЕ postback-URL! Это трекинг/смарт ссылка для пользователя:\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\n# Если у тебя есть отдельный промокод/метка кампании — поменяй тут.\nDEFAULT_PROMO = \"TG\"\n# Импорт словаря локализаций\nfrom languages import text_lang\n# ========= ИНИЦИАЛИЗАЦИЯ БОТА И ДИСПЕТЧЕРА =========",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "DB_NAME",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "DB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\n# Это НЕ postback-URL! Это трекинг/смарт ссылка для пользователя:\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\n# Если у тебя есть отдельный промокод/метка кампании — поменяй тут.\nDEFAULT_PROMO = \"TG\"\n# Импорт словаря локализаций\nfrom languages import text_lang\n# ========= ИНИЦИАЛИЗАЦИЯ БОТА И ДИСПЕТЧЕРА =========\nbot = Bot(token=API_TOKEN)",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "support_user_url",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "support_user_url = \"https://t.me/root_tora\"\n# Это НЕ postback-URL! Это трекинг/смарт ссылка для пользователя:\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\n# Если у тебя есть отдельный промокод/метка кампании — поменяй тут.\nDEFAULT_PROMO = \"TG\"\n# Импорт словаря локализаций\nfrom languages import text_lang\n# ========= ИНИЦИАЛИЗАЦИЯ БОТА И ДИСПЕТЧЕРА =========\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "tracking_url_template",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?trader_id={trader_id}&promo={promo}\"\n# Если у тебя есть отдельный промокод/метка кампании — поменяй тут.\nDEFAULT_PROMO = \"TG\"\n# Импорт словаря локализаций\nfrom languages import text_lang\n# ========= ИНИЦИАЛИЗАЦИЯ БОТА И ДИСПЕТЧЕРА =========\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= БАЗА ДАННЫХ =========\nasync def init_db():",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_PROMO",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "DEFAULT_PROMO = \"TG\"\n# Импорт словаря локализаций\nfrom languages import text_lang\n# ========= ИНИЦИАЛИЗАЦИЯ БОТА И ДИСПЕТЧЕРА =========\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= БАЗА ДАННЫХ =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        # Таблица пользователей",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "bot",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "bot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= БАЗА ДАННЫХ =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        # Таблица пользователей\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                user_id     INTEGER PRIMARY KEY,\n                language    TEXT DEFAULT 'ru',",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "dp",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "dp = Dispatcher(bot)\n# ========= БАЗА ДАННЫХ =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        # Таблица пользователей\n        await db.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                user_id     INTEGER PRIMARY KEY,\n                language    TEXT DEFAULT 'ru',\n                subscribed  INTEGER DEFAULT 0,",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "text_lang",
+        "kind": 5,
+        "importPath": "languages",
+        "description": "languages",
+        "peekOfCode": "text_lang = {\n    \"ru\": {\n        \"Subscribe to channel\": \"Подписаться на канал\",\n        \"Check subscription\": \"Проверить подписку\",\n        \"Change Language\": \"Смена языка\",\n        \"Instruction\": \"Инструкция\",\n        \"Support\": \"Поддержка\",\n        \"Signals\": \"Сигналы\",\n        \"Back\": \"Назад\",\n        \"Register\": \"Регистрация\",",
+        "detail": "languages",
+        "documentation": {}
+    }
+]
