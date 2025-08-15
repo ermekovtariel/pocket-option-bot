@@ -174,6 +174,10 @@ async def callbacks(call: types.CallbackQuery):
     if data == "signals":
         await call.message.edit_caption(t(lang, "Register for signals:"), reply_markup=signals_inline(lang))
         return
+    
+    if data == "change_lang":
+        await call.message.edit_caption("Выберите язык / Choose language", reply_markup=language_inline())
+        return
 
     if data == "register":
         # на всякий случай ещё раз зафиксируем click_id=user_id
