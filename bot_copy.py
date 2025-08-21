@@ -9,8 +9,8 @@ from aiogram.types import WebAppInfo, InputFile
 # from aiogram.types import InputFile
 # ========= НАСТРОЙКИ =========
 API_TOKEN = "8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU"   # <-- твой токен бота
-CHANNEL_USERNAME = "https://t.me/+CAUTQzJGcFUyMjAy"
-CHANNEL_ID = "436917567"
+CHANNEL_USERNAME = "@bot_alex_merser"
+CHANNEL_ID = 436917567
 # https://t.me/+CAUTQzJGcFUyMjAy
 DB_NAME = "users.db"
 support_user_url = "https://t.me/Egoisteees"
@@ -71,7 +71,7 @@ def t(lang, key):
 
 async def is_subscribed(user_id):
     try:
-        member = await bot.get_chat_member(CHANNEL_ID, user_id)
+        member = await bot.get_chat_member(CHANNEL_USERNAME, user_id)
         return member.status != "left"
     except:
         return False
@@ -92,7 +92,7 @@ def language_inline():
 
 def subscribe_inline(lang):
     return InlineKeyboardMarkup().add(
-        InlineKeyboardButton(t(lang, "Subscribe to channel"), url=f"{CHANNEL_USERNAME}"),
+        InlineKeyboardButton(t(lang, "Subscribe to channel"), url=f"https://t.me/{CHANNEL_USERNAME[1:]}"),
         InlineKeyboardButton(t(lang, "Check subscription"), callback_data="check_sub"),
     )
 
