@@ -279,7 +279,11 @@ async def handle_postback(request: web.Request):
 
         # уведомление пользователю (если click_id — реальный Telegram id)
         try:
-            await bot.send_message(int(click_id), t("ru", "You are registered ✅"))
+            async with aiosqlite.connect(DB_NAME) as db:
+                async with db.execute("SELECT language FROM users WHERE click_id=?", (click_id,)) as cur:
+                    row = await cur.fetchone()
+                    user_lang = row[0] if row and row[0] else "ru"
+            await bot.send_message(int(click_id), t(user_lang, "You are registered ✅")) # мне нужно чтобы тут тоже было проверка языка
         except Exception:
             pass
 
