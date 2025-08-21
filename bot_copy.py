@@ -102,12 +102,15 @@ def main_menu_inline(lang, registered=False):
         kb.add(InlineKeyboardButton(t(lang, "Open Mini App"), web_app=WebAppInfo(url="http://pocketproffesional.ru/")))
     return kb
 
-def back_inline(lang):
-    return InlineKeyboardMarkup().add(InlineKeyboardButton(t(lang, "Back"), callback_data="back"))
+def back_inline(lang, url):
+    return InlineKeyboardMarkup().add(
+        InlineKeyboardButton(t(lang, "Register"), url=url),
+        InlineKeyboardButton(t(lang, "Back"), callback_data="back")
+    )
 
-def signals_inline(lang):
+def signals_inline(lang, url):
     return InlineKeyboardMarkup(row_width=1).add(
-        InlineKeyboardButton(t(lang, "Register"), callback_data="register"),
+        InlineKeyboardButton(t(lang, "Register"), url=url),
         InlineKeyboardButton(t(lang, "Check registration"), callback_data="check_registration"),
         InlineKeyboardButton(t(lang, "Back"), callback_data="back"),
     )
@@ -172,7 +175,11 @@ async def callbacks(call: types.CallbackQuery):
         return
 
     if data == "signals":
-        await call.message.edit_caption(t(lang, "Register for signals:"), reply_markup=signals_inline(lang))
+        async with aiosqlite.connect(DB_NAME) as db:
+            await db.execute("UPDATE users SET click_id=? WHERE user_id=?", (str(user_id), user_id))
+            await db.commit()
+        url = tracking_url_template.format(click_id=user_id, promo=DEFAULT_PROMO)
+        await call.message.edit_caption(t(lang, "Register for signals:"), reply_markup=signals_inline(lang, url))
         return
     
     if data == "change_lang":
@@ -187,7 +194,7 @@ async def callbacks(call: types.CallbackQuery):
         url = tracking_url_template.format(click_id=user_id, promo=DEFAULT_PROMO)
         await call.message.edit_caption(
             f"{t(lang, 'For registration, please follow the link')}:\n{url}",
-            reply_markup=back_inline(lang)
+            reply_markup=back_inline(lang, url)
         )
         return
 
