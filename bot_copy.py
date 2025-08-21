@@ -9,12 +9,17 @@ from aiogram.types import WebAppInfo, InputFile
 # from aiogram.types import InputFile
 # ========= НАСТРОЙКИ =========
 API_TOKEN = "8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU"   # <-- твой токен бота
-CHANNEL_USERNAME = "@etb_music"
+CHANNEL_USERNAME = "https://t.me/+CAUTQzJGcFUyMjAy"
+CHANNEL_ID = "436917567"
+# https://t.me/+CAUTQzJGcFUyMjAy
 DB_NAME = "users.db"
-support_user_url = "https://t.me/root_tora"
+support_user_url = "https://t.me/Egoisteees"
 
 # Ссылка для регистрации пользователя (click_id = user_id)
-tracking_url_template = "https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}"
+# tracking_url_template = "https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}"
+tracking_url_template = "https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}"
+
+alex_url = "https://www.youtube.com/"
 DEFAULT_PROMO = "TG"
 
 from languages import text_lang
@@ -66,7 +71,7 @@ def t(lang, key):
 
 async def is_subscribed(user_id):
     try:
-        member = await bot.get_chat_member(CHANNEL_USERNAME, user_id)
+        member = await bot.get_chat_member(CHANNEL_ID, user_id)
         return member.status != "left"
     except:
         return False
@@ -87,7 +92,7 @@ def language_inline():
 
 def subscribe_inline(lang):
     return InlineKeyboardMarkup().add(
-        InlineKeyboardButton(t(lang, "Subscribe to channel"), url=f"https://t.me/{CHANNEL_USERNAME[1:]}"),
+        InlineKeyboardButton(t(lang, "Subscribe to channel"), url=f"{CHANNEL_USERNAME}"),
         InlineKeyboardButton(t(lang, "Check subscription"), callback_data="check_sub"),
     )
 
@@ -99,7 +104,7 @@ def main_menu_inline(lang, registered=False):
         InlineKeyboardButton(t(lang, "Signals"), callback_data="signals"),
     )
     if registered:
-        kb.add(InlineKeyboardButton(t(lang, "Open Mini App"), web_app=WebAppInfo(url="http://pocketproffesional.ru/")))
+        kb.add(InlineKeyboardButton(t(lang, "Open Mini App"), web_app=WebAppInfo(url=alex_url)))
     return kb
 
 def back_inline(lang, url):
@@ -114,6 +119,11 @@ def signals_inline(lang, url):
         InlineKeyboardButton(t(lang, "Check registration"), callback_data="check_registration"),
         InlineKeyboardButton(t(lang, "Back"), callback_data="back"),
     )
+
+# @dp.message_handler(content_types=["any"])
+# async def get_chat_id(message: types.Message):
+#     print("chat_id:", message.chat.id)
+#     await message.reply(f"chat_id: {message.chat.id}")
 
 # ========= ХЕНДЛЕРЫ БОТА =========
 @dp.message_handler(commands=["start"])

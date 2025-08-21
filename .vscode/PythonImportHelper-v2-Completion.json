@@ -284,7 +284,7 @@
         "kind": 2,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "def t(lang, key):\n    return text_lang.get(lang, {}).get(key, key)\nasync def is_subscribed(user_id):\n    try:\n        member = await bot.get_chat_member(CHANNEL_USERNAME, user_id)\n        return member.status != \"left\"\n    except:\n        return False\nasync def is_registered(user_id):\n    async with aiosqlite.connect(DB_NAME) as db:",
+        "peekOfCode": "def t(lang, key):\n    return text_lang.get(lang, {}).get(key, key)\nasync def is_subscribed(user_id):\n    try:\n        member = await bot.get_chat_member(CHANNEL_ID, user_id)\n        return member.status != \"left\"\n    except:\n        return False\nasync def is_registered(user_id):\n    async with aiosqlite.connect(DB_NAME) as db:",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -293,7 +293,7 @@
         "kind": 2,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "def language_inline():\n    return InlineKeyboardMarkup(row_width=3).add(\n        InlineKeyboardButton(\"Русский\", callback_data=\"lang_ru\"),\n        InlineKeyboardButton(\"Кыргыз\", callback_data=\"lang_kg\"),\n        InlineKeyboardButton(\"English\", callback_data=\"lang_en\"),\n    )\ndef subscribe_inline(lang):\n    return InlineKeyboardMarkup().add(\n        InlineKeyboardButton(t(lang, \"Subscribe to channel\"), url=f\"https://t.me/{CHANNEL_USERNAME[1:]}\"),\n        InlineKeyboardButton(t(lang, \"Check subscription\"), callback_data=\"check_sub\"),",
+        "peekOfCode": "def language_inline():\n    return InlineKeyboardMarkup(row_width=3).add(\n        InlineKeyboardButton(\"Русский\", callback_data=\"lang_ru\"),\n        InlineKeyboardButton(\"Кыргыз\", callback_data=\"lang_kg\"),\n        InlineKeyboardButton(\"English\", callback_data=\"lang_en\"),\n    )\ndef subscribe_inline(lang):\n    return InlineKeyboardMarkup().add(\n        InlineKeyboardButton(t(lang, \"Subscribe to channel\"), url=f\"{CHANNEL_USERNAME}\"),\n        InlineKeyboardButton(t(lang, \"Check subscription\"), callback_data=\"check_sub\"),",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -302,7 +302,7 @@
         "kind": 2,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "def subscribe_inline(lang):\n    return InlineKeyboardMarkup().add(\n        InlineKeyboardButton(t(lang, \"Subscribe to channel\"), url=f\"https://t.me/{CHANNEL_USERNAME[1:]}\"),\n        InlineKeyboardButton(t(lang, \"Check subscription\"), callback_data=\"check_sub\"),\n    )\ndef main_menu_inline(lang, registered=False):\n    kb = InlineKeyboardMarkup(row_width=2).add(\n        InlineKeyboardButton(t(lang, \"Change Language\"), callback_data=\"change_lang\"),\n        InlineKeyboardButton(t(lang, \"Instruction\"), callback_data=\"instruction\"),\n        InlineKeyboardButton(t(lang, \"Support\"), url=support_user_url),",
+        "peekOfCode": "def subscribe_inline(lang):\n    return InlineKeyboardMarkup().add(\n        InlineKeyboardButton(t(lang, \"Subscribe to channel\"), url=f\"{CHANNEL_USERNAME}\"),\n        InlineKeyboardButton(t(lang, \"Check subscription\"), callback_data=\"check_sub\"),\n    )\ndef main_menu_inline(lang, registered=False):\n    kb = InlineKeyboardMarkup(row_width=2).add(\n        InlineKeyboardButton(t(lang, \"Change Language\"), callback_data=\"change_lang\"),\n        InlineKeyboardButton(t(lang, \"Instruction\"), callback_data=\"instruction\"),\n        InlineKeyboardButton(t(lang, \"Support\"), url=support_user_url),",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -311,7 +311,7 @@
         "kind": 2,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "def main_menu_inline(lang, registered=False):\n    kb = InlineKeyboardMarkup(row_width=2).add(\n        InlineKeyboardButton(t(lang, \"Change Language\"), callback_data=\"change_lang\"),\n        InlineKeyboardButton(t(lang, \"Instruction\"), callback_data=\"instruction\"),\n        InlineKeyboardButton(t(lang, \"Support\"), url=support_user_url),\n        InlineKeyboardButton(t(lang, \"Signals\"), callback_data=\"signals\"),\n    )\n    if registered:\n        kb.add(InlineKeyboardButton(t(lang, \"Open Mini App\"), web_app=WebAppInfo(url=\"http://pocketproffesional.ru/\")))\n    return kb",
+        "peekOfCode": "def main_menu_inline(lang, registered=False):\n    kb = InlineKeyboardMarkup(row_width=2).add(\n        InlineKeyboardButton(t(lang, \"Change Language\"), callback_data=\"change_lang\"),\n        InlineKeyboardButton(t(lang, \"Instruction\"), callback_data=\"instruction\"),\n        InlineKeyboardButton(t(lang, \"Support\"), url=support_user_url),\n        InlineKeyboardButton(t(lang, \"Signals\"), callback_data=\"signals\"),\n    )\n    if registered:\n        kb.add(InlineKeyboardButton(t(lang, \"Open Mini App\"), web_app=WebAppInfo(url=alex_url)))\n    return kb",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -329,7 +329,7 @@
         "kind": 2,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "def signals_inline(lang, url):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang, \"Register\"), url=url),\n        InlineKeyboardButton(t(lang, \"Check registration\"), callback_data=\"check_registration\"),\n        InlineKeyboardButton(t(lang, \"Back\"), callback_data=\"back\"),\n    )\n# ========= ХЕНДЛЕРЫ БОТА =========\n@dp.message_handler(commands=[\"start\"])\nasync def start(message: types.Message):\n    async with aiosqlite.connect(DB_NAME) as db:",
+        "peekOfCode": "def signals_inline(lang, url):\n    return InlineKeyboardMarkup(row_width=1).add(\n        InlineKeyboardButton(t(lang, \"Register\"), url=url),\n        InlineKeyboardButton(t(lang, \"Check registration\"), callback_data=\"check_registration\"),\n        InlineKeyboardButton(t(lang, \"Back\"), callback_data=\"back\"),\n    )\n# @dp.message_handler(content_types=[\"any\"])\n# async def get_chat_id(message: types.Message):\n#     print(\"chat_id:\", message.chat.id)\n#     await message.reply(f\"chat_id: {message.chat.id}\")",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -338,7 +338,7 @@
         "kind": 5,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "API_TOKEN = \"8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU\"   # <-- твой токен бота\nCHANNEL_USERNAME = \"@etb_music\"\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\n# Ссылка для регистрации пользователя (click_id = user_id)\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)",
+        "peekOfCode": "API_TOKEN = \"8127281037:AAHIKWzlmNJlmMg4N6_sMLGDLPEtyHg0_aU\"   # <-- твой токен бота\nCHANNEL_USERNAME = \"https://t.me/+CAUTQzJGcFUyMjAy\"\nCHANNEL_ID = \"436917567\"\n# https://t.me/+CAUTQzJGcFUyMjAy\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/Egoisteees\"\n# Ссылка для регистрации пользователя (click_id = user_id)\n# tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\ntracking_url_template = \"https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}\"\nalex_url = \"https://www.youtube.com/\"",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -347,7 +347,16 @@
         "kind": 5,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "CHANNEL_USERNAME = \"@etb_music\"\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\n# Ссылка для регистрации пользователя (click_id = user_id)\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========",
+        "peekOfCode": "CHANNEL_USERNAME = \"https://t.me/+CAUTQzJGcFUyMjAy\"\nCHANNEL_ID = \"436917567\"\n# https://t.me/+CAUTQzJGcFUyMjAy\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/Egoisteees\"\n# Ссылка для регистрации пользователя (click_id = user_id)\n# tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\ntracking_url_template = \"https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}\"\nalex_url = \"https://www.youtube.com/\"\nDEFAULT_PROMO = \"TG\"",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "CHANNEL_ID",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "CHANNEL_ID = \"436917567\"\n# https://t.me/+CAUTQzJGcFUyMjAy\nDB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/Egoisteees\"\n# Ссылка для регистрации пользователя (click_id = user_id)\n# tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\ntracking_url_template = \"https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}\"\nalex_url = \"https://www.youtube.com/\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -356,7 +365,7 @@
         "kind": 5,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "DB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/root_tora\"\n# Ссылка для регистрации пользователя (click_id = user_id)\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========\nasync def init_db():",
+        "peekOfCode": "DB_NAME = \"users.db\"\nsupport_user_url = \"https://t.me/Egoisteees\"\n# Ссылка для регистрации пользователя (click_id = user_id)\n# tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\ntracking_url_template = \"https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}\"\nalex_url = \"https://www.youtube.com/\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -365,7 +374,7 @@
         "kind": 5,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "support_user_url = \"https://t.me/root_tora\"\n# Ссылка для регистрации пользователя (click_id = user_id)\ntracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:",
+        "peekOfCode": "support_user_url = \"https://t.me/Egoisteees\"\n# Ссылка для регистрации пользователя (click_id = user_id)\n# tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\ntracking_url_template = \"https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}\"\nalex_url = \"https://www.youtube.com/\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========",
         "detail": "bot_copy",
         "documentation": {}
     },
@@ -374,7 +383,16 @@
         "kind": 5,
         "importPath": "bot_copy",
         "description": "bot_copy",
-        "peekOfCode": "tracking_url_template = \"https://u3.shortink.io/smart/3BhXXPRtZ739nL?click_id={click_id}&promo={promo}\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        # Основные таблицы\n        await db.execute(\"\"\"",
+        "peekOfCode": "tracking_url_template = \"https://u3.shortink.io/register?utm_campaign=810355&utm_source=affiliate&utm_medium=sr&a=Cusj5EUyBvV2qY&ac=001&code=50START&click_id={click_id}\"\nalex_url = \"https://www.youtube.com/\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        # Основные таблицы",
+        "detail": "bot_copy",
+        "documentation": {}
+    },
+    {
+        "label": "alex_url",
+        "kind": 5,
+        "importPath": "bot_copy",
+        "description": "bot_copy",
+        "peekOfCode": "alex_url = \"https://www.youtube.com/\"\nDEFAULT_PROMO = \"TG\"\nfrom languages import text_lang\nbot = Bot(token=API_TOKEN)\ndp = Dispatcher(bot)\n# ========= ИНИЦИАЛИЗАЦИЯ/МИГРАЦИЯ БД =========\nasync def init_db():\n    async with aiosqlite.connect(DB_NAME) as db:\n        # Основные таблицы\n        await db.execute(\"\"\"",
         "detail": "bot_copy",
         "documentation": {}
     },
